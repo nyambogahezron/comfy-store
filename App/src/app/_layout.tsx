@@ -9,8 +9,14 @@ import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
 import 'react-native-reanimated';
 import { PaperProvider } from 'react-native-paper';
+import {
+  GestureDetector,
+  GestureHandlerRootView,
+  Gesture,
+  Directions,
+} from 'react-native-gesture-handler';
 
-import { useColorScheme } from '@/src/hooks/useColorScheme';
+import { useColorScheme } from '@/hooks/useColorScheme';
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -32,14 +38,31 @@ export default function RootLayout() {
   }
 
   return (
-     <PaperProvider>
-
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name='+not-found' />
-        <Stack.Screen name='index' />
-      </Stack>
-    </ThemeProvider>
-     </PaperProvider>
+    <GestureHandlerRootView>
+      <PaperProvider>
+        <ThemeProvider
+          value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}
+        >
+          <Stack>
+            <Stack.Screen name='+not-found' />
+            <Stack.Screen
+              name='index'
+              options={{
+                headerShown: false,
+                headerStyle: {
+                  backgroundColor: 'transparent',
+                },
+              }}
+            />
+            <Stack.Screen
+              name='(Home)'
+              options={{
+                headerShown: true,
+              }}
+            />
+          </Stack>
+        </ThemeProvider>
+      </PaperProvider>
+    </GestureHandlerRootView>
   );
 }
