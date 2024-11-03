@@ -9,12 +9,7 @@ import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
 import 'react-native-reanimated';
 import { PaperProvider } from 'react-native-paper';
-import {
-  GestureDetector,
-  GestureHandlerRootView,
-  Gesture,
-  Directions,
-} from 'react-native-gesture-handler';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 import { useColorScheme } from '@/hooks/useColorScheme';
 
@@ -57,7 +52,7 @@ export default function RootLayout() {
             <Stack.Screen
               name='(Home)'
               options={{
-                headerShown: true,
+                headerShown: false,
               }}
             />
           </Stack>
