@@ -6,6 +6,10 @@ import ConnectDB from './config/database';
 
 const app: Express = express();
 
+//routes
+import AuthRoutes from './routes/Auth.routes';
+
+app.use('/api/v1/auth', AuthRoutes);
 app.get('/', (req: Request, res: Response) => {
   res.send('Express + TypeScript Server');
 });
