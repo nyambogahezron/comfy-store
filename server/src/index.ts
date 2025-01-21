@@ -9,10 +9,19 @@ const app: Express = express();
 //routes
 import AuthRoutes from './routes/Auth.routes';
 
+//middlewares
+import ErrorHandlerMiddleware from './middleware/ErrorsHandler';
+import NotFoundHandler from './middleware/NotFound';
+
+app.use(express.json());
+
 app.use('/api/v1/auth', AuthRoutes);
 app.get('/', (req: Request, res: Response) => {
   res.send('Express + TypeScript Server');
 });
+
+app.use(ErrorHandlerMiddleware as unknown as express.ErrorRequestHandler);
+app.use(NotFoundHandler);
 
 async function StartApp() {
   const port = process.env.PORT || 3000;
