@@ -1,13 +1,43 @@
 import { Request, Response } from 'express';
+import AsyncHandler from '../middleware/AsyncHandler';
+import User from '../models/User.model';
+import { BadRequestError } from '../errors';
 
-export async function RegisterUser(req: Request, res: Response) {
-  res.send('Register User');
-}
+/**
+ * Register User
+ * POST /api/v1/auth/register
+ * Public
+ */
 
-export async function LoginUser(req: Request, res: Response) {
+export const RegisterUser = AsyncHandler(
+  async (req: Request, res: Response) => {
+    const { name, email, password } = req.body;
+
+    // check if user exists
+    const emailExists = await User.findOne({ email });
+
+    if (emailExists) {
+      throw new BadRequestError('Email already exists');
+    }
+
+    console.log(name, email, password);
+  }
+);
+
+/**
+ * Login User
+ * POST /api/v1/auth/login
+ * Public
+ */
+export const LoginUser = AsyncHandler(async (req: Request, res: Response) => {
   res.send('Login User');
-}
+});
 
-export async function LogoutUser(req: Request, res: Response) {
+/**
+ * Logout User
+ * GET /api/v1/auth/logout
+ * Private
+ */
+export const LogoutUser = AsyncHandler(async (req: Request, res: Response) => {
   res.send('Logout User');
-}
+});
