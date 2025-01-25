@@ -33,6 +33,22 @@ const UserSchema = new mongoose.Schema(
       minlength: [8, 'Password must be at least 8 characters long'],
       select: false,
     },
+    verificationToken: { type: String },
+    isVerified: { type: Boolean, default: false },
+    passwordResetToken: { type: String },
+    passwordToken: { type: String },
+    passwordTokenExpires: { type: Date },
+    lastSeen: { type: Date },
+    accountStatus: {
+      type: String,
+      enum: ['active', 'inactive', 'suspended'],
+      default: 'active',
+    },
+    loginAttempts: {
+      type: Number,
+      default: 0,
+      max: 5,
+    },
   },
   {
     timestamps: true,

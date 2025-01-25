@@ -2,6 +2,8 @@ import { Request, Response } from 'express';
 import AsyncHandler from '../middleware/AsyncHandler';
 import User from '../models/User.model';
 import { BadRequestError } from '../errors';
+import { generateCode } from '../utils/GenerateCode';
+import { StatusCodes } from 'http-status-codes';
 
 /**
  * Register User
@@ -13,6 +15,10 @@ export const RegisterUser = AsyncHandler(
   async (req: Request, res: Response) => {
     const { name, email, password } = req.body;
 
+    if (!name || !email || !password) {
+      throw new BadRequestError('Please provide all fields');
+    }
+
     // check if user exists
     const emailExists = await User.findOne({ email });
 
@@ -20,7 +26,18 @@ export const RegisterUser = AsyncHandler(
       throw new BadRequestError('Email already exists');
     }
 
-    console.log(name, email, password);
+    const verificationToken = generateCode();
+
+    const user = await User.create({
+      name,
+      email,
+      password,
+      verificationToken,
+    });
+
+    user.password = '';
+
+    res.status(StatusCodes.CREATED).json({ success: true, data: user });
   }
 );
 
