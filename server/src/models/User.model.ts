@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
-import validator from 'validator';
 import bcrypt from 'bcryptjs';
+import { EmailValidator } from '../utils/validator';
 
 const UserSchema = new mongoose.Schema(
   {
@@ -15,7 +15,6 @@ const UserSchema = new mongoose.Schema(
       type: String,
       required: [true, 'Email is required'],
       unique: true,
-      validate: [validator.isEmail, 'Please provide a valid email'],
     },
     role: {
       type: String,
@@ -55,9 +54,19 @@ const UserSchema = new mongoose.Schema(
   }
 );
 
+//check if email is valid
+
+UserSchema.path('email').validate(async (email: string) => {
+  EmailValidator(email);
+}, 'Invalid email');
+
 // match user entered password to hashed password in database
-UserSchema.methods.matchPassword = async function (enteredPassword: string) {
-  return await bcrypt.compare(enteredPassword, this.password);
+UserSchema.methods.comparePassword = async function (
+  candidatePassword: string
+) {
+  const isMatch = await bcrypt.compare(candidatePassword, this.password);
+
+  return isMatch;
 };
 
 // Encrypt password using bcrypt

@@ -2,6 +2,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 import express, { Express, Request, Response } from 'express';
+import cors from 'cors';
 import ConnectDB from './config/database';
 
 const app: Express = express();
@@ -22,6 +23,12 @@ app.get('/', (req: Request, res: Response) => {
 
 app.use(ErrorHandlerMiddleware as unknown as express.ErrorRequestHandler);
 app.use(NotFoundHandler);
+
+const corsOptions = {
+  origin: process.env.CLIENT_URL,
+  optionsSuccessStatus: 200,
+};
+app.use(cors(corsOptions));
 
 async function StartApp() {
   const port = process.env.PORT || 3000;
