@@ -10,6 +10,7 @@ const app: Express = express();
 
 //routes
 import AuthRoutes from './routes/Auth.routes';
+import UserRoutes from './routes/User.routes';
 
 //middlewares
 import ErrorHandlerMiddleware from './middleware/ErrorsHandler';
@@ -23,8 +24,9 @@ if (!process.env.JWT_SECRET) {
 app.use(cookieParser({ secret: process.env.JWT_SECRET }));
 
 app.use('/api/v1/auth', AuthRoutes);
+app.use('/api/v1/users', UserRoutes);
 app.get('/', (req: Request, res: Response) => {
-  res.send('Express + TypeScript Server');
+  res.send('Comfy-store API');
 });
 
 app.use(ErrorHandlerMiddleware as unknown as express.ErrorRequestHandler);

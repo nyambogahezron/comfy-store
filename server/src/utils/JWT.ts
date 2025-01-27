@@ -1,8 +1,8 @@
-import jwt from 'jsonwebtoken';
+import jwt, { JwtPayload } from 'jsonwebtoken';
 import { InternalServerError } from '../errors';
+import { attachCookieProps } from '../types';
 
 /**
- *
  * @returns JWT_SECRET from .env file
  */
 const getSecret = () => {
@@ -13,20 +13,12 @@ const getSecret = () => {
   return secret;
 };
 
-/** create token object */
-
-export const JWT = (payload: any) => {
+export const JWT = (payload: JwtPayload) => {
   return jwt.sign(payload, getSecret());
 };
 
 export const verifyJWT = (token: string) => {
   return jwt.verify(token, getSecret());
-};
-
-type attachCookieProps = {
-  res: any;
-  token: string;
-  user: any;
 };
 
 export default function attachCookieToResponse({
@@ -46,7 +38,7 @@ export default function attachCookieToResponse({
   const cookieOptions = {
     httpOnly: true,
     secure: process.env.NODE_ENV === 'production',
-    sameSite: 'strict',
+    sameSite: 'strict' as 'strict',
     signed: true,
     expires: new Date(Date.now() + oneDay),
   };

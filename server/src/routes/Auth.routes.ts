@@ -6,6 +6,7 @@ import {
   LogoutUser,
   VerifyEmail,
   ResendVerificationCode,
+  ResetPassword,
 } from '../controllers/Auth.controller';
 
 const router = Router();
@@ -19,5 +20,7 @@ router.get('/logout', LogoutUser);
 router.post('/verify-email', VerifyEmail);
 
 router.post('/resend-verification', ResendVerificationCode);
+
+router.post('/reset-password', ResetPassword);
 
 export default router;

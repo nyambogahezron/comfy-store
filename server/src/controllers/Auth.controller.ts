@@ -7,6 +7,8 @@ import { BadRequestError, UnauthorizedError } from '../errors';
 import { generateCode } from '../utils/GenerateCode';
 import { StatusCodes } from 'http-status-codes';
 import attachCookieToResponse from '../utils/JWT';
+import CreateHash from '../utils/CreateHash';
+import { UserProps } from '../types';
 
 /**
  *@description Register User
@@ -149,7 +151,7 @@ export const LoginUser = AsyncHandler(async (req: Request, res: Response) => {
     throw new UnauthorizedError('Email not verified');
   }
 
-  const tokenObj = {
+  const tokenObj: UserProps = {
     userId: user._id,
     name: user.name,
     email: user.email,
@@ -213,7 +215,7 @@ export const ForgotPassword = AsyncHandler(
     const tenMinutes = 10 * 60 * 1000;
     const passwordResetExpires = Date.now() + tenMinutes;
 
-    user.passwordToken = resetToken;
+    user.passwordToken = CreateHash(resetToken);
     user.passwordTokenExpires = new Date(passwordResetExpires);
 
     await user.save();
@@ -221,6 +223,52 @@ export const ForgotPassword = AsyncHandler(
     res
       .status(StatusCodes.OK)
       .json({ success: true, message: 'Reset token sent successfully' });
+  }
+);
+
+/**
+ * @description Reset Password
+ * @POST /api/v1/auth/reset-password
+ * @access Public
+ */
+
+export const ResetPassword = AsyncHandler(
+  async (req: Request, res: Response) => {
+    const { token, email, password } = req.body;
+
+    if (!token || !email || !password) {
+      throw new BadRequestError('Please provide all fields');
+    }
+
+    const user = await User.findOne({ email });
+
+    if (!user) {
+      throw new BadRequestError('User not found');
+    }
+
+    const currentTime = Date.now();
+    const hashedToken = CreateHash(token);
+
+    if (user.passwordToken !== hashedToken) {
+      throw new BadRequestError('Invalid token');
+    }
+
+    if (
+      !user.passwordTokenExpires ||
+      currentTime > user.passwordTokenExpires.getTime()
+    ) {
+      throw new BadRequestError('Token expired');
+    }
+
+    user.password = password;
+    user.passwordToken = '';
+    user.passwordTokenExpires = undefined;
+
+    await user.save();
+
+    res
+      .status(StatusCodes.OK)
+      .json({ success: true, message: 'Password reset successfully' });
   }
 );
 
