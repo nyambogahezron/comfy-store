@@ -4,6 +4,7 @@ dotenv.config();
 import express, { Express, Request, Response } from 'express';
 import cors from 'cors';
 import ConnectDB from './config/database';
+import cookieParser from './middleware/CookieParser';
 
 const app: Express = express();
 
@@ -15,6 +16,11 @@ import ErrorHandlerMiddleware from './middleware/ErrorsHandler';
 import NotFoundHandler from './middleware/NotFound';
 
 app.use(express.json());
+
+if (!process.env.JWT_SECRET) {
+  throw new Error('JWT_SECRET is not defined');
+}
+app.use(cookieParser({ secret: process.env.JWT_SECRET }));
 
 app.use('/api/v1/auth', AuthRoutes);
 app.get('/', (req: Request, res: Response) => {

@@ -10,7 +10,7 @@ const ErrorHandlerMiddleware = (
 ): Response => {
   // default error
   let customError = new CustomError({
-    message: 'Something went wrong',
+    message: 'Something went wrong, please try again later',
     statusCode: StatusCodes.INTERNAL_SERVER_ERROR,
   });
 
@@ -71,9 +71,10 @@ const ErrorHandlerMiddleware = (
       .json({ message: customError.message });
   }
 
-  return res
-    .status(customError.statusCode)
-    .json({ message: customError.message });
+  return res.status(customError.statusCode).json({
+    message: customError.message,
+    stack: process.env.NODE_ENV === 'development' ? err.stack : undefined,
+  });
 };
 
 export default ErrorHandlerMiddleware;

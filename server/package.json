@@ -12,8 +12,9 @@
   "author": "Nyamboga Hezron",
   "license": "ISC",
   "dependencies": {
-    "@types/cors": "^2.8.17",
     "bcryptjs": "^2.4.3",
+    "cookie": "^1.0.2",
+    "cookie-signature": "^1.2.2",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
@@ -25,11 +26,14 @@
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.6",
+    "@types/cookie-signature": "^1.1.2",
+    "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",
     "@types/jsonwebtoken": "^9.0.7",
     "@types/node": "^22.10.2",
     "@types/nodemailer": "^6.4.17",
     "@types/validator": "^13.12.2",
+    "jest": "^29.7.0",
     "nodemon": "^3.1.9",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.7.2"

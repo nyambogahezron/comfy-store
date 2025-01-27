@@ -34,6 +34,12 @@ export default function attachCookieToResponse({
   token,
   user,
 }: attachCookieProps) {
+  if (!res.cookie) {
+    throw new InternalServerError(
+      'cookieParser("secret") required for signed cookies'
+    );
+  }
+
   const oneDay = 1000 * 60 * 60 * 24; // 24 hours
   const LongTime = 1000 * 60 * 60 * 24 * 30; // 30 days
 

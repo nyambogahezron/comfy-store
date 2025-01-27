@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose, { InferSchemaType } from 'mongoose';
 import bcrypt from 'bcryptjs';
 import { EmailValidator } from '../utils/validator';
 
@@ -10,7 +10,6 @@ const UserSchema = new mongoose.Schema(
       minlength: [3, 'Name must be at least 3 characters long'],
       maxlength: [50, 'Name must be at most 50 characters long'],
     },
-
     email: {
       type: String,
       required: [true, 'Email is required'],
@@ -37,7 +36,6 @@ const UserSchema = new mongoose.Schema(
     passwordResetToken: { type: String },
     passwordToken: { type: String },
     passwordTokenExpires: { type: Date },
-    lastSeen: { type: Date },
     accountStatus: {
       type: String,
       enum: ['active', 'inactive', 'suspended'],
@@ -46,7 +44,6 @@ const UserSchema = new mongoose.Schema(
     loginAttempts: {
       type: Number,
       default: 0,
-      max: 5,
     },
   },
   {
@@ -54,22 +51,50 @@ const UserSchema = new mongoose.Schema(
   }
 );
 
-//check if email is valid
+/**
+ * @type User types
+ * @description extracted from the schema
+ */
+type IUser = InferSchemaType<typeof UserSchema>;
 
+/**
+ * @type User methods
+ */
+interface IUserMethods {
+  comparePassword(candidatePassword: string): Promise<boolean>;
+}
+
+/**
+ * @description Validate email
+ */
 UserSchema.path('email').validate(async (email: string) => {
   EmailValidator(email);
 }, 'Invalid email');
 
-// match user entered password to hashed password in database
-UserSchema.methods.comparePassword = async function (
-  candidatePassword: string
-) {
-  const isMatch = await bcrypt.compare(candidatePassword, this.password);
+/**
+ *
+ * @param enteredPassword
+ * @returns  boolean
+ * @description Compare password
+ */
+UserSchema.methods.comparePassword = async function (enteredPassword: any) {
+  const user = await mongoose
+    .model('User')
+    .findById(this._id)
+    .select('+password');
+  const password = user?.password;
+  if (!password) {
+    console.log('No password');
+    return false;
+  }
+  const isMatch = await bcrypt.compare(enteredPassword, password);
 
   return isMatch;
 };
 
-// Encrypt password using bcrypt
+/**
+ * @description Hash password before saving
+ */
 UserSchema.pre('save', async function (next) {
   if (!this.isModified('password')) {
     next();
@@ -79,6 +104,6 @@ UserSchema.pre('save', async function (next) {
   this.password = await bcrypt.hash(this.password, salt);
 });
 
-const User = mongoose.model('User', UserSchema);
+const User = mongoose.model<IUser & IUserMethods>('User', UserSchema);
 
 export default User;
