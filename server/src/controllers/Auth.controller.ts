@@ -9,6 +9,7 @@ import { StatusCodes } from 'http-status-codes';
 import attachCookieToResponse from '../utils/JWT';
 import CreateHash from '../utils/CreateHash';
 import { UserProps } from '../types';
+import SendEmail from '../utils/SendEmail';
 
 /**
  *@description Register User
@@ -33,7 +34,13 @@ export const RegisterUser = AsyncHandler(
 
     const verificationToken = generateCode();
 
-    //TODO: Send email
+    await SendEmail({
+      email,
+      name,
+      subject: 'Comfy Store - Email Verification',
+      message: verificationToken,
+      category: 'confirmation',
+    });
 
     const user = await User.create({
       name,
@@ -114,7 +121,13 @@ export const ResendVerificationCode = AsyncHandler(
 
     await user.save();
 
-    //TODO: Send email
+    await SendEmail({
+      email: user.email,
+      name: user.name,
+      subject: 'Comfy Store - Email Verification',
+      message: verificationToken,
+      category: 'confirmation',
+    });
 
     res
       .status(StatusCodes.OK)
@@ -175,6 +188,7 @@ export const LoginUser = AsyncHandler(async (req: Request, res: Response) => {
   }
 
   refreshToken = crypto.randomBytes(40).toString('hex');
+
   const userToken = {
     user: user._id,
     token: refreshToken,
