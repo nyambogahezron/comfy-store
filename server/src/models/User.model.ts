@@ -84,7 +84,6 @@ UserSchema.methods.comparePassword = async function (enteredPassword: any) {
     .select('+password');
   const password = user?.password;
   if (!password) {
-    console.log('No password');
     return false;
   }
   const isMatch = await bcrypt.compare(enteredPassword, password);

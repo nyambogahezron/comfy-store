@@ -3,15 +3,18 @@ import {
   GetCurrentUser,
   UpdatePassword,
   UpdateUser,
+  GetSingleUser,
 } from '../controllers/User.controller';
 import Authenticate from '../middleware/Authenticate';
 
 const router = Router();
 
+router.get('/:id', GetSingleUser);
+
 router.get('/me', Authenticate, GetCurrentUser);
 
-router.put('/update', UpdateUser);
+router.patch('/update', Authenticate, UpdateUser);
 
-router.put('/update-password', UpdatePassword);
+router.patch('/update-password', Authenticate, UpdatePassword);
 
 export default router;

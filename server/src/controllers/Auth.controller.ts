@@ -274,7 +274,7 @@ export const ResetPassword = AsyncHandler(
 
 /**
  *@description logout user
- *@GET /api/v1/auth/logout
+ *@DELETE /api/v1/auth/logout
  * @access Private
  */
 export const LogoutUser = AsyncHandler(async (req: Request, res: Response) => {
@@ -289,5 +289,5 @@ export const LogoutUser = AsyncHandler(async (req: Request, res: Response) => {
     httpOnly: true,
     expires: new Date(Date.now()),
   });
-  res.status(StatusCodes.OK).json({ msg: 'user logged out!', user: userId });
+  res.status(StatusCodes.OK).json({ msg: 'user logged out!' });
 });
