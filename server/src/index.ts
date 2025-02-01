@@ -11,6 +11,8 @@ const app: Express = express();
 //routes
 import AuthRoutes from './routes/Auth.routes';
 import UserRoutes from './routes/User.routes';
+import ProductRoutes from './routes/Product.routes';
+import OrganizationRoutes from './routes/Organization.routes';
 
 //middlewares
 import ErrorHandlerMiddleware from './middleware/ErrorsHandler';
@@ -25,6 +27,9 @@ app.use(cookieParser({ secret: process.env.JWT_SECRET }));
 
 app.use('/api/v1/auth', AuthRoutes);
 app.use('/api/v1/users', UserRoutes);
+app.use('/api/v1/products', ProductRoutes);
+app.use('/api/v1/org', OrganizationRoutes);
+
 app.get('/', (req: Request, res: Response) => {
   res.send('Comfy-store API');
 });
