@@ -13,6 +13,7 @@ import AuthRoutes from './routes/Auth.routes';
 import UserRoutes from './routes/User.routes';
 import ProductRoutes from './routes/Product.routes';
 import OrganizationRoutes from './routes/Organization.routes';
+import OrderRoutes from './routes/Order.routes';
 
 //middlewares
 import ErrorHandlerMiddleware from './middleware/ErrorsHandler';
@@ -29,6 +30,7 @@ app.use('/api/v1/auth', AuthRoutes);
 app.use('/api/v1/users', UserRoutes);
 app.use('/api/v1/products', ProductRoutes);
 app.use('/api/v1/org', OrganizationRoutes);
+app.use('/api/v1/orders', OrderRoutes);
 
 app.get('/', (req: Request, res: Response) => {
   res.send('Comfy-store API');
