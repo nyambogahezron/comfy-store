@@ -1,0 +1,24 @@
+{
+  "name": "comfy-store",
+  "private": true,
+  "scripts": {
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "lint": "turbo lint",
+    "type-check": "turbo type-check",
+    "clean": "turbo clean",
+    "test": "turbo test",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "install:all": "bun install"
+  },
+  "devDependencies": {
+    "@turbo/gen": "^1.10.12",
+    "turbo": "^1.10.12",
+    "prettier": "^3.0.0"
+  },
+  "packageManager": "bun@1.0.0",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ]
+}

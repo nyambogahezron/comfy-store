@@ -51,3 +51,10 @@ ios/
 android/
 # macOS
 .DS_Store
+
+# Turbo
+.turbo/
+
+# Bun
+bun.lockb
+.bun/

@@ -1,12 +1,13 @@
 {
-  "name": "comfy-store",
+  "name": "@comfy-store/web",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.5.0",
