@@ -2,9 +2,17 @@
 
 # dependencies
 node_modules/
+**/node_modules/
 /.pnp
 .pnp.js
 .yarn/install-state.gz
+
+# Bun
+bun.lockb
+.bun/
+
+# Turbo
+.turbo/
 
 # testing
 /coverage
@@ -51,10 +59,3 @@ ios/
 android/
 # macOS
 .DS_Store
-
-# Turbo
-.turbo/
-
-# Bun
-bun.lockb
-.bun/

@@ -29,16 +29,19 @@ This Turborepo includes the following packages/apps:
 ### Installation
 
 1. Install dependencies:
+
 ```bash
 npm install
 ```
 
 2. Build all packages:
+
 ```bash
 npm run build
 ```
 
 3. Start development servers:
+
 ```bash
 npm run dev
 ```
