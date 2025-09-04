@@ -1,9 +1,0 @@
-[install]
-# Prefer online registry for faster installs
-prefer = "online"
-# Auto-install peer dependencies
-auto = "auto"
-
-[dev]
-# Enable hot reloading for development
-hot = true

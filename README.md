@@ -8,16 +8,16 @@ This Turborepo includes the following packages/apps:
 
 ### Apps
 
-- `@comfy-store/mobile`: React Native Expo application
-- `@comfy-store/dashboard`: Next.js admin dashboard
-- `@comfy-store/web`: Next.js customer-facing website
-- `@comfy-store/server`: Express.js API server
+- `@repo/mobile`: React Native Expo application
+- `@repo/dashboard`: Next.js admin dashboard
+- `@repo/web`: Next.js customer-facing website
+- `@repo/server`: Express.js API server
 
 ### Packages
 
-- `@comfy-store/ui`: Shared React UI components
-- `@comfy-store/eslint-config`: Shared ESLint configurations
-- `@comfy-store/typescript-config`: Shared TypeScript configurations
+- `@repo/ui`: Shared React UI components
+- `@repo/eslint-config`: Shared ESLint configurations
+- `@repo/typescript-config`: Shared TypeScript configurations
 
 ## Getting Started
 
