@@ -1,16 +1,12 @@
-import { Router } from 'express';
-import {
-  getAllProducts,
-  getSingleProduct,
-  createProduct,
-} from '../controllers/Product.controller';
+import { Router } from "express";
+import { createProduct, getAllProducts, getSingleProduct } from "../controllers/Product.controller";
 
-import authenticate from '../middleware/Authenticate';
+import authenticate from "../middleware/Authenticate";
 
 const router = Router();
 
-router.get('/', getAllProducts);
-router.get('/:id', getSingleProduct);
-router.post('/', authenticate, createProduct);
+router.get("/", getAllProducts);
+router.get("/:id", getSingleProduct);
+router.post("/", authenticate, createProduct);
 
 export default router;

@@ -1,31 +1,31 @@
 {
-  "compilerOptions": {
-    "target": "es2016",
-    "module": "commonjs",
-    "rootDir": "./src",
-    "sourceMap": true,
-    "outDir": "./dist",
-    "removeComments": true,
-    "inlineSources": true,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "strict": true,
-    "noImplicitAny": true,
-    "strictNullChecks": true,
-    "strictFunctionTypes": true,
-    "strictBindCallApply": true,
-    "strictPropertyInitialization": true,
-    "noImplicitThis": true,
-    "alwaysStrict": true,
-    "noUnusedLocals": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
-    "skipLibCheck": true,
-    "typeRoots": ["types", "./node_modules/@types"]
-  },
-  "paths": {
-    "@/*": ["./*"]
-  },
-  "include": ["src/**/*.ts", "types/**/*.d.ts", "index.ts"],
-  "exclude": ["node_modules", "dist"]
+	"compilerOptions": {
+		"target": "es2016",
+		"module": "commonjs",
+		"rootDir": "./src",
+		"sourceMap": true,
+		"outDir": "./dist",
+		"removeComments": true,
+		"inlineSources": true,
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		"strict": true,
+		"noImplicitAny": true,
+		"strictNullChecks": true,
+		"strictFunctionTypes": true,
+		"strictBindCallApply": true,
+		"strictPropertyInitialization": true,
+		"noImplicitThis": true,
+		"alwaysStrict": true,
+		"noUnusedLocals": true,
+		"noImplicitReturns": true,
+		"noFallthroughCasesInSwitch": true,
+		"skipLibCheck": true,
+		"typeRoots": ["types", "./node_modules/@types"]
+	},
+	"paths": {
+		"@/*": ["./*"]
+	},
+	"include": ["src/**/*.ts", "types/**/*.d.ts", "index.ts"],
+	"exclude": ["node_modules", "dist"]
 }

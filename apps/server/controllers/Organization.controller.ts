@@ -1,7 +1,7 @@
-import Organization from '../models/Organization.model';
-import AsyncHandler from '../middleware/AsyncHandler';
-import { Request, Response } from 'express';
-import { BadRequestError, NotFoundError, UnauthorizedError } from '../errors';
+import type { Request, Response } from "express";
+import { BadRequestError, NotFoundError, UnauthorizedError } from "../errors";
+import AsyncHandler from "../middleware/AsyncHandler";
+import Organization from "../models/Organization.model";
 
 /**
  * @desc Get Current Organization
@@ -9,18 +9,16 @@ import { BadRequestError, NotFoundError, UnauthorizedError } from '../errors';
  * @access Private
  */
 
-export const getCurrentOrganization = AsyncHandler(
-  async (req: Request, res: Response) => {
-    const userId = req.user?.userId;
-    const organization = await Organization.findOne({ user: userId });
+export const getCurrentOrganization = AsyncHandler(async (req: Request, res: Response) => {
+	const userId = req.user?.userId;
+	const organization = await Organization.findOne({ user: userId });
 
-    if (!organization) {
-      throw new NotFoundError('Organization not found');
-    }
+	if (!organization) {
+		throw new NotFoundError("Organization not found");
+	}
 
-    res.status(200).json({ success: true, data: organization });
-  }
-);
+	res.status(200).json({ success: true, data: organization });
+});
 
 /**
  * @desc Get Organization By ID
@@ -28,17 +26,15 @@ export const getCurrentOrganization = AsyncHandler(
  * @access Public
  */
 
-export const GetSingleOrganization = AsyncHandler(
-  async (req: Request, res: Response) => {
-    const organization = await Organization.findById(req.params.id);
+export const GetSingleOrganization = AsyncHandler(async (req: Request, res: Response) => {
+	const organization = await Organization.findById(req.params.id);
 
-    if (!organization) {
-      throw new NotFoundError('Organization not found');
-    }
+	if (!organization) {
+		throw new NotFoundError("Organization not found");
+	}
 
-    res.status(200).json({ success: true, data: organization });
-  }
-);
+	res.status(200).json({ success: true, data: organization });
+});
 
 /**
  * @desc Get All Organizations
@@ -46,13 +42,11 @@ export const GetSingleOrganization = AsyncHandler(
  * @access Public
  */
 
-export const getAllOrganizations = AsyncHandler(
-  async (req: Request, res: Response) => {
-    const organizations = await Organization.find();
+export const getAllOrganizations = AsyncHandler(async (_req: Request, res: Response) => {
+	const organizations = await Organization.find();
 
-    res.status(200).json({ success: true, data: organizations });
-  }
-);
+	res.status(200).json({ success: true, data: organizations });
+});
 
 /**
  * @desc Create Organization
@@ -60,59 +54,47 @@ export const getAllOrganizations = AsyncHandler(
  * @access Private
  */
 
-export const createOrganization = AsyncHandler(
-  async (req: Request, res: Response) => {
-    const userId = req.user?.userId;
-    const organization = await Organization.findOne({ user: userId });
+export const createOrganization = AsyncHandler(async (req: Request, res: Response) => {
+	const userId = req.user?.userId;
+	const organization = await Organization.findOne({ user: userId });
 
-    if (organization) {
-      throw new UnauthorizedError('Organization already exists');
-    }
+	if (organization) {
+		throw new UnauthorizedError("Organization already exists");
+	}
 
-    const {
-      name,
-      email,
-      phone,
-      address,
-      city,
-      country,
-      postalCode,
-      website,
-      logo,
-    } = req.body;
+	const { name, email, phone, address, city, country, postalCode, website, logo } = req.body;
 
-    if (
-      !name ||
-      !email ||
-      !phone ||
-      !address ||
-      !city ||
-      !country ||
-      !postalCode ||
-      !website ||
-      !logo
-    ) {
-      throw new BadRequestError('Please fill in all fields');
-    }
+	if (
+		!name ||
+		!email ||
+		!phone ||
+		!address ||
+		!city ||
+		!country ||
+		!postalCode ||
+		!website ||
+		!logo
+	) {
+		throw new BadRequestError("Please fill in all fields");
+	}
 
-    const newOrganization = new Organization({
-      user: userId,
-      name,
-      email,
-      phone,
-      address,
-      city,
-      country,
-      postalCode,
-      website,
-      logo,
-    });
+	const newOrganization = new Organization({
+		user: userId,
+		name,
+		email,
+		phone,
+		address,
+		city,
+		country,
+		postalCode,
+		website,
+		logo,
+	});
 
-    await newOrganization.save();
+	await newOrganization.save();
 
-    res.status(201).json({ success: true, data: newOrganization });
-  }
-);
+	res.status(201).json({ success: true, data: newOrganization });
+});
 
 /**
  * @desc Update Organization
@@ -120,46 +102,34 @@ export const createOrganization = AsyncHandler(
  * @access Private
  */
 
-export const updateOrganization = AsyncHandler(
-  async (req: Request, res: Response) => {
-    const userId = req.user?.userId;
-    const organization = await Organization.findOne({ user: userId });
+export const updateOrganization = AsyncHandler(async (req: Request, res: Response) => {
+	const userId = req.user?.userId;
+	const organization = await Organization.findOne({ user: userId });
 
-    if (!organization) {
-      throw new NotFoundError('Organization not found');
-    }
+	if (!organization) {
+		throw new NotFoundError("Organization not found");
+	}
 
-    if (organization.user !== userId) {
-      throw new UnauthorizedError('Not authorized to update this organization');
-    }
+	if (organization.user !== userId) {
+		throw new UnauthorizedError("Not authorized to update this organization");
+	}
 
-    const {
-      name,
-      email,
-      phone,
-      address,
-      city,
-      country,
-      postalCode,
-      website,
-      logo,
-    } = req.body;
+	const { name, email, phone, address, city, country, postalCode, website, logo } = req.body;
 
-    organization.name = name;
-    organization.email = email;
-    organization.phone = phone;
-    organization.address = address;
-    organization.city = city;
-    organization.country = country;
-    organization.postalCode = postalCode;
-    organization.website = website;
-    organization.logo = logo;
+	organization.name = name;
+	organization.email = email;
+	organization.phone = phone;
+	organization.address = address;
+	organization.city = city;
+	organization.country = country;
+	organization.postalCode = postalCode;
+	organization.website = website;
+	organization.logo = logo;
 
-    await organization.save();
+	await organization.save();
 
-    res.status(200).json({ success: true, data: organization });
-  }
-);
+	res.status(200).json({ success: true, data: organization });
+});
 
 /**
  * @desc Delete Organization
@@ -167,21 +137,19 @@ export const updateOrganization = AsyncHandler(
  * @access Private
  */
 
-export const deleteOrganization = AsyncHandler(
-  async (req: Request, res: Response) => {
-    const userId = req.user?.userId;
-    const organization = await Organization.findOne({ user: userId });
+export const deleteOrganization = AsyncHandler(async (req: Request, res: Response) => {
+	const userId = req.user?.userId;
+	const organization = await Organization.findOne({ user: userId });
 
-    if (!organization) {
-      throw new NotFoundError('Organization not found');
-    }
+	if (!organization) {
+		throw new NotFoundError("Organization not found");
+	}
 
-    if (organization.user !== userId) {
-      throw new UnauthorizedError('Not authorized to delete this organization');
-    }
+	if (organization.user !== userId) {
+		throw new UnauthorizedError("Not authorized to delete this organization");
+	}
 
-    await organization.deleteOne();
+	await organization.deleteOne();
 
-    res.status(200).json({ success: true, data: {} });
-  }
-);
+	res.status(200).json({ success: true, data: {} });
+});

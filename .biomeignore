@@ -1,0 +1,55 @@
+# Dependencies
+
+node_modules/
+\*\*/node_modules/
+
+# Build outputs
+
+dist/
+build/
+.next/
+out/
+coverage/
+
+# Generated files
+
+_.d.ts
+_.generated.ts
+\*.generated.js
+
+# Assets and public files
+
+public/
+**/public/
+assets/
+**/assets/
+
+# Logs and temp files
+
+_.log
+_.tmp
+.DS_Store
+
+# Package manager lock files
+
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+bun.lockb
+
+# Environment files
+
+.env\*
+!.env.example
+
+# IDE and editor files
+
+.vscode/
+.idea/
+_.swp
+_.swo
+
+# Documentation that shouldn't be formatted
+
+**/README.md
+**/CHANGELOG.md

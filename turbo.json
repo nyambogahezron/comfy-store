@@ -12,6 +12,8 @@
 			"persistent": true
 		},
 		"lint": {},
+		"format": {},
+		"check": {},
 		"type-check": {},
 		"test": {},
 		"clean": {

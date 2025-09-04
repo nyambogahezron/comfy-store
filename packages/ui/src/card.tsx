@@ -1,10 +1,10 @@
-import React from "react";
+import type React from "react";
 
 interface CardProps {
-  children: React.ReactNode;
-  className?: string;
+	children: React.ReactNode;
+	className?: string;
 }
 
 export const Card = ({ children, className }: CardProps) => {
-  return <div className={className}>{children}</div>;
+	return <div className={className}>{children}</div>;
 };

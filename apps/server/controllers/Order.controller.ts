@@ -1,7 +1,7 @@
-import Order from '../models/Order.model';
-import AsyncHandler from '../middleware/AsyncHandler';
-import { BadRequestError, NotFoundError } from '../errors';
-import { Request, Response } from 'express';
+import type { Request, Response } from "express";
+import { BadRequestError, NotFoundError } from "../errors";
+import AsyncHandler from "../middleware/AsyncHandler";
+import Order from "../models/Order.model";
 
 /**
  * @desc    Create new order
@@ -9,39 +9,37 @@ import { Request, Response } from 'express';
  * @access  Private
  */
 
-export const CreateNewOrder = AsyncHandler(
-  async (req: Request, res: Response) => {
-    const {
-      orderItems,
-      shippingAddress,
-      paymentMethod,
-      itemsPrice,
-      shippingPrice,
-      taxPrice,
-      totalPrice,
-    } = req.body;
+export const CreateNewOrder = AsyncHandler(async (req: Request, res: Response) => {
+	const {
+		orderItems,
+		shippingAddress,
+		paymentMethod,
+		itemsPrice,
+		shippingPrice,
+		taxPrice,
+		totalPrice,
+	} = req.body;
 
-    if (!orderItems || orderItems.length === 0) {
-      res.status(400);
-      throw new BadRequestError('No order items');
-    }
+	if (!orderItems || orderItems.length === 0) {
+		res.status(400);
+		throw new BadRequestError("No order items");
+	}
 
-    const order = new Order({
-      orderItems,
-      user: req.user?.userId,
-      shippingAddress,
-      paymentMethod,
-      itemsPrice,
-      shippingPrice,
-      taxPrice,
-      totalPrice,
-    });
+	const order = new Order({
+		orderItems,
+		user: req.user?.userId,
+		shippingAddress,
+		paymentMethod,
+		itemsPrice,
+		shippingPrice,
+		taxPrice,
+		totalPrice,
+	});
 
-    const createdOrder = await order.save();
+	const createdOrder = await order.save();
 
-    res.status(201).json(createdOrder);
-  }
-);
+	res.status(201).json(createdOrder);
+});
 
 /**
  * @desc Get order by ID
@@ -49,20 +47,15 @@ export const CreateNewOrder = AsyncHandler(
  * @access Private
  */
 
-export const GetSingleOrder = AsyncHandler(
-  async (req: Request, res: Response) => {
-    const order = await Order.findById(req.params.id).populate(
-      'user',
-      'name email'
-    );
+export const GetSingleOrder = AsyncHandler(async (req: Request, res: Response) => {
+	const order = await Order.findById(req.params.id).populate("user", "name email");
 
-    if (!order) {
-      throw new NotFoundError('Order not found');
-    }
+	if (!order) {
+		throw new NotFoundError("Order not found");
+	}
 
-    res.json(order);
-  }
-);
+	res.json(order);
+});
 
 /**
  * @desc Update order to paid
@@ -71,18 +64,18 @@ export const GetSingleOrder = AsyncHandler(
  */
 
 export const UpdateOrder = AsyncHandler(async (req: Request, res: Response) => {
-  const order = await Order.findById(req.params.id);
+	const order = await Order.findById(req.params.id);
 
-  if (!order) {
-    throw new NotFoundError('Order not found');
-  }
+	if (!order) {
+		throw new NotFoundError("Order not found");
+	}
 
-  order.isPaid = true;
-  order.paidAt = new Date();
+	order.isPaid = true;
+	order.paidAt = new Date();
 
-  const updatedOrder = await order.save();
+	const updatedOrder = await order.save();
 
-  res.json(updatedOrder);
+	res.json(updatedOrder);
 });
 
 /**
@@ -92,9 +85,9 @@ export const UpdateOrder = AsyncHandler(async (req: Request, res: Response) => {
  */
 
 export const GetMyOrders = AsyncHandler(async (req: Request, res: Response) => {
-  const orders = await Order.find({ user: req.user?.userId });
+	const orders = await Order.find({ user: req.user?.userId });
 
-  res.json(orders);
+	res.json(orders);
 });
 
 /**
@@ -103,10 +96,8 @@ export const GetMyOrders = AsyncHandler(async (req: Request, res: Response) => {
  * @access Private/Admin
  */
 
-export const GetAllOrders = AsyncHandler(
-  async (req: Request, res: Response) => {
-    const orders = await Order.find({}).populate('user', 'id name');
+export const GetAllOrders = AsyncHandler(async (_req: Request, res: Response) => {
+	const orders = await Order.find({}).populate("user", "id name");
 
-    res.json(orders);
-  }
-);
+	res.json(orders);
+});

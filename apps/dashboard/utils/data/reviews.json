@@ -1,123 +1,122 @@
 [
-    {
-        "id": 1,
-        "user": "Sarah Johnson",
-        "rating": 5,
-        "date": "2024-03-15",
-        "comment": "This sofa is absolutely perfect! The quality is outstanding, and it fits perfectly in my living room. The color is exactly as shown in the pictures.",
-        "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
-    },
-    {
-        "id": 2,
-        "user": "Michael Chen",
-        "rating": 4,
-        "date": "2024-03-10",
-        "comment": "Very comfortable and well-made. Delivery was quick and assembly was straightforward. Only giving 4 stars because the color is slightly darker than expected.",
-        "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
-    },
-    {
-        "id": 3,
-        "user": "Emily Davis",
-        "rating": 5,
-        "date": "2024-03-05",
-        "comment": "Exceeded my expectations! The fabric is high quality and the cushions are the perfect balance of firm and soft.",
-        "avatar": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
-    }
-    ,
-    {
-        "id": 4,
-        "user": "David Smith",
-        "rating": 3,
-        "date": "2024-03-01",
-        "comment": "The sofa is decent for the price, but the cushions are a bit too firm for my liking.",
-        "avatar": "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
-    },
-    {
-        "id": 5,
-        "user": "Jessica Brown",
-        "rating": 5,
-        "date": "2024-02-25",
-        "comment": "Absolutely love this sofa! It's stylish, comfortable, and the perfect addition to my home.",
-        "avatar": "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
-    },
-    {
-        "id": 6,
-        "user": "Daniel Wilson",
-        "rating": 4,
-        "date": "2024-02-20",
-        "comment": "Good quality sofa, but the delivery took longer than expected.",
-        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
-    },
-    {
-        "id": 7,
-        "user": "Laura Martinez",
-        "rating": 5,
-        "date": "2024-02-15",
-        "comment": "This sofa is everything I hoped for and more. The fabric is soft and durable.",
-        "avatar": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
-    },
-    {
-        "id": 8,
-        "user": "James Anderson",
-        "rating": 4,
-        "date": "2024-02-10",
-        "comment": "Comfortable and stylish, but the assembly instructions could be clearer.",
-        "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
-    },
-    {
-        "id": 9,
-        "user": "Sophia Lee",
-        "rating": 5,
-        "date": "2024-02-05",
-        "comment": "Perfect sofa for my apartment. The size is just right and it's very comfortable.",
-        "avatar": "https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
-    },
-    {
-        "id": 10,
-        "user": "Matthew Harris",
-        "rating": 3,
-        "date": "2024-02-01",
-        "comment": "The sofa is okay, but the color is not as vibrant as shown in the pictures.",
-        "avatar": "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
-    },
-    {
-        "id": 11,
-        "user": "Olivia Clark",
-        "rating": 5,
-        "date": "2024-01-25",
-        "comment": "I am very happy with this purchase. The sofa is comfortable and looks great in my living room.",
-        "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
-    },
-    {
-        "id": 12,
-        "user": "Ethan Lewis",
-        "rating": 4,
-        "date": "2024-01-20",
-        "comment": "Good value for the price. The sofa is comfortable and looks nice.",
-        "avatar": "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
-    },
-    {
-        "id": 13,
-        "user": "Ava Walker",
-        "rating": 5,
-        "date": "2024-01-15",
-        "comment": "This sofa is amazing! It's very comfortable and the quality is top-notch.",
-        "avatar": "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
-    },
-    {
-        "id": 14,
-        "user": "William Hall",
-        "rating": 4,
-        "date": "2024-01-10",
-        "comment": "Nice sofa, but the delivery was delayed by a few days.",
-        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
-    },
-    {
-        "id": 15,
-        "user": "Isabella Young",
-        "rating": 5,
-        "date": "2024-01-05",
-        "comment": "I love this sofa! It's very comfortable and looks great in my home.",
-        "avatar": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
-    }
+	{
+		"id": 1,
+		"user": "Sarah Johnson",
+		"rating": 5,
+		"date": "2024-03-15",
+		"comment": "This sofa is absolutely perfect! The quality is outstanding, and it fits perfectly in my living room. The color is exactly as shown in the pictures.",
+		"avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
+	},
+	{
+		"id": 2,
+		"user": "Michael Chen",
+		"rating": 4,
+		"date": "2024-03-10",
+		"comment": "Very comfortable and well-made. Delivery was quick and assembly was straightforward. Only giving 4 stars because the color is slightly darker than expected.",
+		"avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
+	},
+	{
+		"id": 3,
+		"user": "Emily Davis",
+		"rating": 5,
+		"date": "2024-03-05",
+		"comment": "Exceeded my expectations! The fabric is high quality and the cushions are the perfect balance of firm and soft.",
+		"avatar": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
+	},
+	{
+		"id": 4,
+		"user": "David Smith",
+		"rating": 3,
+		"date": "2024-03-01",
+		"comment": "The sofa is decent for the price, but the cushions are a bit too firm for my liking.",
+		"avatar": "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
+	},
+	{
+		"id": 5,
+		"user": "Jessica Brown",
+		"rating": 5,
+		"date": "2024-02-25",
+		"comment": "Absolutely love this sofa! It's stylish, comfortable, and the perfect addition to my home.",
+		"avatar": "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
+	},
+	{
+		"id": 6,
+		"user": "Daniel Wilson",
+		"rating": 4,
+		"date": "2024-02-20",
+		"comment": "Good quality sofa, but the delivery took longer than expected.",
+		"avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
+	},
+	{
+		"id": 7,
+		"user": "Laura Martinez",
+		"rating": 5,
+		"date": "2024-02-15",
+		"comment": "This sofa is everything I hoped for and more. The fabric is soft and durable.",
+		"avatar": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
+	},
+	{
+		"id": 8,
+		"user": "James Anderson",
+		"rating": 4,
+		"date": "2024-02-10",
+		"comment": "Comfortable and stylish, but the assembly instructions could be clearer.",
+		"avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
+	},
+	{
+		"id": 9,
+		"user": "Sophia Lee",
+		"rating": 5,
+		"date": "2024-02-05",
+		"comment": "Perfect sofa for my apartment. The size is just right and it's very comfortable.",
+		"avatar": "https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
+	},
+	{
+		"id": 10,
+		"user": "Matthew Harris",
+		"rating": 3,
+		"date": "2024-02-01",
+		"comment": "The sofa is okay, but the color is not as vibrant as shown in the pictures.",
+		"avatar": "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
+	},
+	{
+		"id": 11,
+		"user": "Olivia Clark",
+		"rating": 5,
+		"date": "2024-01-25",
+		"comment": "I am very happy with this purchase. The sofa is comfortable and looks great in my living room.",
+		"avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
+	},
+	{
+		"id": 12,
+		"user": "Ethan Lewis",
+		"rating": 4,
+		"date": "2024-01-20",
+		"comment": "Good value for the price. The sofa is comfortable and looks nice.",
+		"avatar": "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
+	},
+	{
+		"id": 13,
+		"user": "Ava Walker",
+		"rating": 5,
+		"date": "2024-01-15",
+		"comment": "This sofa is amazing! It's very comfortable and the quality is top-notch.",
+		"avatar": "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
+	},
+	{
+		"id": 14,
+		"user": "William Hall",
+		"rating": 4,
+		"date": "2024-01-10",
+		"comment": "Nice sofa, but the delivery was delayed by a few days.",
+		"avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
+	},
+	{
+		"id": 15,
+		"user": "Isabella Young",
+		"rating": 5,
+		"date": "2024-01-05",
+		"comment": "I love this sofa! It's very comfortable and looks great in my home.",
+		"avatar": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
+	}
 ]

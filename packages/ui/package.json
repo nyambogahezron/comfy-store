@@ -5,14 +5,15 @@
 	"main": "./index.tsx",
 	"types": "./index.tsx",
 	"scripts": {
-		"lint": "eslint . --max-warnings 0",
+		"lint": "biome lint .",
+		"format": "biome format --write .",
+		"check": "biome check --write .",
 		"generate:component": "turbo gen react-component"
 	},
 	"devDependencies": {
 		"@repo/typescript-config": "workspace:*",
 		"@types/react": "19.0.10",
 		"@types/react-dom": "19.1.9",
-		"eslint": "9.34.0",
 		"react": "19.0.0",
 		"typescript": "5.9.2"
 	},

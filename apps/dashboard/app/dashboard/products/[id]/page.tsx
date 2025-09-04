@@ -1,5 +1,5 @@
-import ProductDetails from './ProductDetails';
-import productsData from '@/utils/data/products.json';
+import productsData from "@/utils/data/products.json";
+import ProductDetails from "./ProductDetails";
 
 export default function Page({ params }: { params: { id: string } }) {
 	return <ProductDetails params={params} />;

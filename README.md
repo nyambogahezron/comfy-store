@@ -16,7 +16,6 @@ This Turborepo includes the following packages/apps:
 ### Packages
 
 - `@repo/ui`: Shared React UI components
-- `@repo/eslint-config`: Shared ESLint configurations
 - `@repo/typescript-config`: Shared TypeScript configurations
 
 ## Getting Started
@@ -24,35 +23,66 @@ This Turborepo includes the following packages/apps:
 ### Prerequisites
 
 - Node.js (version 18 or higher)
-- npm or yarn
+- Bun package manager
 
 ### Installation
 
 1. Install dependencies:
 
 ```bash
-npm install
+bun install
 ```
 
 2. Build all packages:
 
 ```bash
-npm run build
+bun run build
 ```
 
 3. Start development servers:
 
 ```bash
-npm run dev
+bun run dev
 ```
 
 ## Available Scripts
 
-- `npm run dev` - Start all development servers
-- `npm run build` - Build all packages and apps
-- `npm run lint` - Run ESLint across all packages
-- `npm run type-check` - Run TypeScript type checking
-- `npm run clean` - Clean all build artifacts
+- `bun run dev` - Start all development servers
+- `bun run build` - Build all packages and apps
+- `bun run lint` - Run Biome linting across all packages
+- `bun run format` - Format code with Biome
+- `bun run check` - Run comprehensive Biome check (format + lint + organize imports)
+- `bun run type-check` - Run TypeScript type checking
+- `bun run clean` - Clean all build artifacts
+
+## Code Quality
+
+This project uses [Biome](https://biomejs.dev/) for linting and code formatting, providing:
+
+- ⚡ Fast performance (10-100x faster than ESLint)
+- 🔧 Auto-fixing capabilities
+- 📦 Zero configuration needed
+- 🎯 Excellent TypeScript support
+- 📝 Import organization
+
+### Quick Biome Commands
+
+```bash
+# Check for issues without fixing
+./scripts/biome.sh check
+
+# Fix safe issues automatically
+./scripts/biome.sh fix
+
+# Fix all issues (including unsafe)
+./scripts/biome.sh unsafe-fix
+
+# Format code only
+./scripts/biome.sh format
+
+# Lint code only
+./scripts/biome.sh lint
+```
 
 ## Project Structure
 
@@ -65,8 +95,10 @@ comfy-store/
 │   └── server/         # Express.js API
 ├── packages/
 │   ├── ui/             # Shared UI components
-│   ├── eslint-config/  # ESLint configurations
 │   └── typescript-config/ # TypeScript configurations
+├── scripts/
+│   └── biome.sh        # Biome utility script
+├── biome.json          # Biome configuration
 └── turbo.json          # Turborepo configuration
 ```
 
@@ -76,20 +108,21 @@ Each app can be developed independently:
 
 ```bash
 # Mobile app
-cd apps/mobile && npm run dev
+cd apps/mobile && bun run dev
 
 # Dashboard
-cd apps/dashboard && npm run dev
+cd apps/dashboard && bun run dev
 
 # Web app
-cd apps/web && npm run dev
+cd apps/web && bun run dev
 
 # Server
-cd apps/server && npm run dev
+cd apps/server && bun run dev
 ```
 
 ## Learn More
 
 - [Turborepo Documentation](https://turbo.build/repo/docs)
+- [Biome Documentation](https://biomejs.dev/)
 - [Next.js Documentation](https://nextjs.org/docs)
 - [Expo Documentation](https://docs.expo.dev/)

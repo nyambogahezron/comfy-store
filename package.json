@@ -5,19 +5,19 @@
 		"build": "turbo build",
 		"dev": "turbo dev",
 		"lint": "turbo lint",
+		"format": "turbo format",
+		"check": "turbo check",
 		"type-check": "turbo type-check",
 		"clean": "turbo clean",
 		"test": "turbo test",
-		"format": "prettier --write \"**/*.{ts,tsx,md}\"",
 		"cleanup": "node scripts/cleanup/clean.js"
 	},
 	"devDependencies": {
+		"@biomejs/biome": "^2.2.2",
 		"@turbo/gen": "^1.10.12",
 		"@types/node": "24.3.0",
 		"@types/react": "19.0.10",
 		"@types/react-dom": "19.1.9",
-		"eslint": "9.34.0",
-		"prettier": "3.6.2",
 		"turbo": "^1.10.12",
 		"typescript": "5.9.2",
 		"workspace-version-aligner": "^1.0.1"

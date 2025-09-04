@@ -1,17 +1,13 @@
-import { Request, Response, NextFunction } from 'express';
+import type { NextFunction, Request, Response } from "express";
 
-type AsyncFunction = (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => Promise<void>;
+type AsyncFunction = (req: Request, res: Response, next: NextFunction) => Promise<void>;
 
 export default function AsyncHandler(fn: AsyncFunction) {
-  return async (req: Request, res: Response, next: NextFunction) => {
-    try {
-      await fn(req, res, next);
-    } catch (error) {
-      next(error);
-    }
-  };
+	return async (req: Request, res: Response, next: NextFunction) => {
+		try {
+			await fn(req, res, next);
+		} catch (error) {
+			next(error);
+		}
+	};
 }
