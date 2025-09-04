@@ -1,5 +1,7 @@
 {
-	"pipeline": {
+	"$schema": "https://turborepo.com/schema.json",
+	"ui": "tui",
+	"tasks": {
 		"build": {
 			"outputs": [".next/**", "!.next/cache/**", "dist/**", "build/**"]
 		},

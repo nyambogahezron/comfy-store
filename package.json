@@ -10,7 +10,19 @@
 		"type-check": "turbo type-check",
 		"clean": "turbo clean",
 		"test": "turbo test",
-		"cleanup": "node scripts/cleanup/clean.js"
+		"cleanup": "node scripts/cleanup/clean.js",
+		"dev:mobile": "turbo run dev --filter=mobile",
+		"dev:web": "turbo run dev --filter=web",
+		"dev:server": "turbo run dev --filter=server",
+		"dev:dashboard": "turbo run dev --filter=dashboard",
+		"start:mobile": "turbo run start --filter=mobile",
+		"start:web": "turbo run start --filter=web",
+		"start:server": "turbo run start --filter=server",
+		"start:dashboard": "turbo run start --filter=dashboard",
+		"build:mobile": "turbo run build --filter=mobile",
+		"build:web": "turbo run build --filter=web",
+		"build:server": "turbo run build --filter=server",
+		"build:dashboard": "turbo run build --filter=dashboard"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "^2.2.2",
@@ -18,7 +30,7 @@
 		"@types/node": "24.3.0",
 		"@types/react": "19.0.10",
 		"@types/react-dom": "19.1.9",
-		"turbo": "^1.10.12",
+		"turbo": "^2.5.6",
 		"typescript": "5.9.2",
 		"workspace-version-aligner": "^1.0.1"
 	},

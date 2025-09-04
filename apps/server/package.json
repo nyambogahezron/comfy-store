@@ -1,5 +1,5 @@
 {
-	"name": "@repo/server",
+	"name": "server",
 	"version": "1.0.0",
 	"description": "comfy server",
 	"main": "index.js",
