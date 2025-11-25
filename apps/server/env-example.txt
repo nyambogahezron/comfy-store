@@ -1,0 +1,20 @@
+# The URI for connecting to your MongoDB database.
+MONGO_URI=
+
+# The port number on which your server will run.
+PORT=5000
+
+# The secret key used for signing JSON Web Tokens (JWT) for authentication.
+JWT_SECRET=
+
+# The environment in which your application is running (e.g., development, production).
+NODE_ENV=
+
+# The email address used for sending emails from the application.
+EMAIL=
+
+# The password for the email account used for sending emails.
+EMAIL_PASSWORD=
+
+# The URL of the client application (e.g., frontend URL).
+CLIENT_URL=
